@@ -1,0 +1,16 @@
+
+POST http://localhost:3001/new-entry
+Content-Type: application/json
+
+{
+    "name":"Sarah",
+    "availability": true
+}
+
+###
+
+DELETE http://localhost:3001/entry/delete/643717774690ff237b987b7a
+
+###
+
+PUT http://localhost:3001/availability/true/6437189d3f162ed3af801a5e
