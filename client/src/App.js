@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import CalendarComponent from './calendar'
 
 const API_BASE = "http://localhost:3001";
 
@@ -10,7 +11,7 @@ function App() {
     useEffect(() => {
         getDevs()
         console.log(devs);
-    }, [])
+    }, [devs])
     const getDevs = () => {
         fetch(API_BASE + "/availability")
             .then(res => res.json())
@@ -78,6 +79,7 @@ function App() {
                     </div>
                 </div>
             ) : ''}
+        <div><CalendarComponent /></div>
 		</div>
 	);
 }

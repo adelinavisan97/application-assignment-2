@@ -3,7 +3,7 @@ POST http://localhost:3001/new-entry
 Content-Type: application/json
 
 {
-    "name":"Sarah",
+    "name":"Adelina",
     "availability": true
 }
 
