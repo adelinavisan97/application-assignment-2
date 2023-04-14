@@ -57,7 +57,7 @@ app.post('/api/sendEmail', (req, res) => {
     // Configure the mail options
     const mailOptions = {
         from: 'emailfortestingcode1@gmail.com',
-        to: recipients.join(','),
+        to: recipients,
         subject,
         text: message
     };

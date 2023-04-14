@@ -6,7 +6,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment);
 const API_BASE = "http://localhost:3001";
-let emails;
+
 
 
 const CalendarComponent = () => {
@@ -49,7 +49,7 @@ const CalendarComponent = () => {
     setShowModal(false);
     setNewEvent(null);
   };
-
+  let emails;
   const handleAddEvent = (title) => {
     const { start, end } = newEvent;
     const newEventObject = {
@@ -58,35 +58,33 @@ const CalendarComponent = () => {
         title
     };
     setEvents([...events, newEventObject]);
-    const databaseData = fetch(API_BASE + '/people')
-        .then(response => response.json())
-        .then(data => {
-            emails = data.map(item => item.email);
-            console.log(emails);
-        return emails;
-    })
-  .catch(error => {
-      console.log(error);
-  });
     // Call API endpoint to send email
-    fetch(API_BASE + '/api/sendEmail', {
-      method: 'POST',
-      body: JSON.stringify({
-        recipients: emails,
-        subject: 'New event added',
-        message: `A new event has been added: ${title} from ${start} to ${end}`
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to send email');
-      }
+    fetch(API_BASE + '/people')
+    .then(response => response.json())
+    .then(data => {
+      const emails = data.map(item => item.email);
+      fetch(API_BASE + '/api/sendEmail', {
+        method: 'POST',
+        body: JSON.stringify({
+          recipients: emails,
+          subject: 'New event added',
+          message: `A new event has been added: ${title} from ${start} to ${end}`
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to send email');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
     })
     .catch(error => {
-      console.error(error);
+      console.log(error);
     });
     
     handleModalClose();
