@@ -34,7 +34,11 @@ const CalendarComponent = () => {
   };
 
   const handleEventClick = (event) => {
-    console.log(event);
+    const deleteConfirmation = window.confirm('Are you sure you want to delete this event?');
+    if (deleteConfirmation) {
+      const updatedEvents = events.filter((item) => item.title !== event.title);
+      setEvents(updatedEvents);
+    }
   };
 
   const handleModalClose = () => {
