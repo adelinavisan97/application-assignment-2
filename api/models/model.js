@@ -1,19 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const peopleSchema = new Schema({
+const staffSchema = new Schema({
     name: {
         type: String,
         required: false
     },
 
-    availability:
+    email:
     {
-        type: Boolean,
-        default: false,
+        type: String,
+        required: true
     }
 })
 
-const People = mongoose.model("People", peopleSchema);
+const People = mongoose.model("People", staffSchema);
 
 module.exports = People;

@@ -9,8 +9,8 @@ const CalendarComponent = () => {
   const [showModal, setShowModal] = useState(false);
   const [newEvent, setNewEvent] = useState(null);
   const [events, setEvents] = useState(() => {
-    const storedEvents = localStorage.getItem('calendarEvents');
-    return storedEvents ? JSON.parse(storedEvents) : [];
+    const storepersonents = localStorage.getItem('calendarEvents');
+    return storepersonents ? JSON.parse(storepersonents) : [];
   });
 
   useEffect(() => {
@@ -36,8 +36,8 @@ const CalendarComponent = () => {
   const handleEventClick = (event) => {
     const deleteConfirmation = window.confirm('Are you sure you want to delete this event?');
     if (deleteConfirmation) {
-      const updatedEvents = events.filter((item) => item.title !== event.title);
-      setEvents(updatedEvents);
+      const updatepersonents = events.filter((item) => item.title !== event.title);
+      setEvents(updatepersonents);
     }
   };
 
@@ -46,7 +46,7 @@ const CalendarComponent = () => {
     setNewEvent(null);
   };
 
-    const handleAddEvent = (title) => {
+    const handleAdpersonent = (title) => {
     const { start, end } = newEvent;
     const newEventObject = {
         start,
@@ -76,7 +76,7 @@ const CalendarComponent = () => {
         <div>
           <div className="popup"><h4>Add event:</h4>
           <input className="input" type="text" onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })} /><br />
-          <button className="mybutton" onClick={() => handleAddEvent(newEvent.title)}>Add</button>
+          <button className="mybutton" onClick={() => handleAdpersonent(newEvent.title)}>Add</button>
           <button className="mybutton" onClick={handleModalClose}>Cancel</button>
         </div>
         </div>
