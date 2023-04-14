@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import CalendarComponent from './calendar';
 import React from 'react';
 
+
 const API_BASE = "http://localhost:3001";
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
 
     useEffect(() => {
         getpeople()
-        console.log(people);
+        // console.log(people);
     }, [people])
     const getpeople = () => {
         fetch(API_BASE + "/people")
@@ -20,6 +21,7 @@ function App() {
             .then(data => setPeople(data))
             .catch(err => console.error("ERROR: ", err))
     }
+
     
     const deletePerson = async id => {
         const data = await fetch(API_BASE + "/entry/delete/" + id, {method: "DELETE"})

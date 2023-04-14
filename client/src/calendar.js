@@ -3,8 +3,10 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
+
 const localizer = momentLocalizer(moment);
 const API_BASE = "http://localhost:3001";
+let emails;
 
 
 const CalendarComponent = () => {
@@ -56,12 +58,21 @@ const CalendarComponent = () => {
         title
     };
     setEvents([...events, newEventObject]);
-  
+    const databaseData = fetch(API_BASE + '/people')
+        .then(response => response.json())
+        .then(data => {
+            emails = data.map(item => item.email);
+            console.log(emails);
+        return emails;
+    })
+  .catch(error => {
+      console.log(error);
+  });
     // Call API endpoint to send email
     fetch(API_BASE + '/api/sendEmail', {
       method: 'POST',
       body: JSON.stringify({
-        recipients: ['visanadelina@yahoo.com'],
+        recipients: emails,
         subject: 'New event added',
         message: `A new event has been added: ${title} from ${start} to ${end}`
       }),
@@ -77,7 +88,7 @@ const CalendarComponent = () => {
     .catch(error => {
       console.error(error);
     });
-  
+    
     handleModalClose();
   };
   
