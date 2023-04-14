@@ -96,8 +96,9 @@ h4 {
 }
 
 .addPopup {
-    position: fixed;
-    bottom: 32px;
+    position: absolute;
+    float: right;
+    top: 32px;
     right: 32px;
     display: flex;
     align-items: center;
@@ -116,7 +117,7 @@ h4 {
 
 .popup {
     position: absolute;
-    top: 80%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;

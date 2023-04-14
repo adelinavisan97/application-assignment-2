@@ -58,6 +58,7 @@ function App() {
 		<div className="App">
             <h1>Welcome</h1>
             <h4>Availability Calculator</h4>
+            <div><CalendarComponent /></div>
             <div className="devs">
                 {devs.map(dev => (
                     <div className={"dev " + (dev.availability ? "is-complete" : "")} key={dev._id}>
@@ -80,7 +81,7 @@ function App() {
                     </div>
                 </div>
             ) : ''}
-        <div><CalendarComponent /></div>
+        
 		</div>
 	);
 }
