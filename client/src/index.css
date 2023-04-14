@@ -38,7 +38,7 @@ h4 {
     margin-bottom: 16px;
 }
 
-.dev {
+.person {
     position: relative;
     background-color: var(--dark);
     padding: 16px;
@@ -50,11 +50,11 @@ h4 {
     margin-bottom: 16px;
 }
 
-.dev:hover {
+.person:hover {
     opacity: 0.8;
 }
 
-.dev .checkbox {
+.person .checkbox {
     width: 20px;
     height: 20px;
     margin-right: 16px;
@@ -64,22 +64,22 @@ h4 {
     transition: 0.4s;
 }
 
-.dev.is-complete .checkbox {
+.person.is-complete .checkbox {
     background-color: var(--primary);
     background-image: linear-gradient(to bottom, var(--primary), var(--secondary));
 }
 
-.dev .name {
+.person .name {
     font-size: 20px;
 }
 
 
 
-.dev.is-complete .name {
+.person.is-complete .name {
     text-decoration: line-through;
 }
 
-.dev .delete-person {
+.person .delete-person {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -96,8 +96,9 @@ h4 {
 }
 
 .addPopup {
-    position: fixed;
-    bottom: 32px;
+    position: absolute;
+    float: right;
+    top: 32px;
     right: 32px;
     display: flex;
     align-items: center;
@@ -116,7 +117,7 @@ h4 {
 
 .popup {
     position: absolute;
-    top: 80%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -146,7 +147,7 @@ h4 {
     text-transform: uppercase;
 }
 
-.add-dev-input {
+.add-person-input {
     appearance: none;
     outline: none;
     border: none;
@@ -156,6 +157,7 @@ h4 {
     width: 100%;
     box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.2);
     font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .button {
@@ -166,7 +168,7 @@ h4 {
     font-weight: 700;
     text-transform: uppercase;
     font-size: 18px;
-    margin-top: 16px;
+    margin-top: 5px;
     text-align: center;
     cursor: pointer;
 }
