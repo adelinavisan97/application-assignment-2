@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
-import CalendarComponent from './calendar'
+import CalendarComponent from './calendar';
+import React from 'react';
 
 const API_BASE = "http://localhost:3001";
 
