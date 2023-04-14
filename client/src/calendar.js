@@ -4,6 +4,8 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment);
+const API_BASE = "http://localhost:3001";
+
 
 const CalendarComponent = () => {
   const [showModal, setShowModal] = useState(false);
@@ -46,16 +48,40 @@ const CalendarComponent = () => {
     setNewEvent(null);
   };
 
-    const handleAddEvent = (title) => {
+  const handleAddEvent = (title) => {
     const { start, end } = newEvent;
     const newEventObject = {
         start,
         end,
         title
     };
-  setEvents([...events, newEventObject]);
-  handleModalClose();
-};
+    setEvents([...events, newEventObject]);
+  
+    // Call API endpoint to send email
+    fetch(API_BASE + '/api/sendEmail', {
+      method: 'POST',
+      body: JSON.stringify({
+        recipients: ['visanadelina@yahoo.com'],
+        subject: 'New event added',
+        message: `A new event has been added: ${title} from ${start} to ${end}`
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  
+    handleModalClose();
+  };
+  
+  
 
   return (
     <div>
