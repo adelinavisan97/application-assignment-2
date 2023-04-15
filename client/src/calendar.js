@@ -49,7 +49,6 @@ const CalendarComponent = () => {
     setShowModal(false);
     setNewEvent(null);
   };
-  let emails;
   const handleAddEvent = (title) => {
     const { start, end } = newEvent;
     const newEventObject = {
