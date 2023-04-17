@@ -2,5 +2,10 @@
   "dependencies": {
     "moment": "^2.29.4",
     "react-big-calendar": "^1.6.9"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "install": "^0.13.0",
+    "npm": "^9.6.4"
   }
 }
